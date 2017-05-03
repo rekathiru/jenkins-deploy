@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson.tasks.Mailer_-DescriptorImpl plugin="mailer@1.20">
   <hudsonUrl>http://52.53.208.205:8080/</hudsonUrl>
-  <smtpAuthUsername>rekaaja@gmail.com</smtpAuthUsername>
+  <smtpAuthUsername>rekaaja87@gmail.com</smtpAuthUsername>
   <smtpAuthPassword>{AQAAABAAAAAQf4+aZQW/HEQuxdhYhBEpnMatkvq52xaFtJFyfJ4RoQ4=}</smtpAuthPassword>
   <smtpHost>smtp.gmail.com</smtpHost>
   <useSsl>true</useSsl>
