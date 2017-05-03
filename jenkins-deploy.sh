@@ -54,7 +54,7 @@ pushd $JENKINS_HOME
 
 git clone https://github.com/rekathiru/jenkins-deploy.git
 
-cp jenkins-deploy/jenkins-support /usr/local/bin/jenkins-support
+cp jenkins-deploy/jenkins-support .
 
 cp jenkins-deploy/install-plugins.sh .
 
@@ -66,12 +66,13 @@ mkdir -p .jenkins/jobs
 
 cp -r jenkins-deploy/jenkins/* .jenkins/
 
-sh install-plugins.sh github maven-plugin
+./install-plugins.sh github maven-plugin
 
+mkdir .jenkins/plugins
 cp /usr/share/jenkins/ref/plugins/* .jenkins/plugins/
 
-sh jenkins.sh
+./jenkins.sh
 
-wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+#wget http://localhost:8080/jnlpJars/jenkins-cli.jar
 
-echo 'jenkins.model.Jenkins.instance.securityRealm.createAccount("user1", "abc123")' | java -jar jenkins-cli.jar -auth admin:12be9ffeb4dc40a483a7ad014db493c0 -s http://localhost:8080/ groovy =
+#echo 'jenkins.model.Jenkins.instance.securityRealm.createAccount("user1", "abc123")' | java -jar jenkins-cli.jar -auth admin:12be9ffeb4dc40a483a7ad014db493c0 -s http://localhost:8080/ groovy =
