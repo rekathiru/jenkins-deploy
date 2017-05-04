@@ -1,0 +1,27 @@
+#jenkins class
+class jenkins(
+  $owner   = 'root',
+  $group   = 'root',
+  $repo_url	   = 'https://github.com/rekathiru',
+  $repo_name = "jenkins-deploy",
+){
+  include base, java
+  $jenkins_home="/var/jenkins_home"
+  $jenkins_version="2.46.2"
+  $jenkins_sha="aa7f243a4c84d3d6cfb99a218950b8f7b926af7aa2570b0e1707279d464472c7"
+  $jenkins_url="https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${jenkins_version}/jenkins-war-${jenkins_version}.war"
+  $jenkins_user="jenkins"
+  $jenkins_group="jenkins"
+  
+
+   exec {
+     'Install Jenkins':
+      path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      cwd       => $jenkins_home,
+      command   => "curl -fsSL ${jenkins_url} -o /usr/share/jenkins/jenkins.war && echo \"${jenkins_sha}  /usr/share/jenkins/jenkins.war\" | sha256sum -c -",
+      logoutput => 'on_failure',
+  }
+
+
+}
+
