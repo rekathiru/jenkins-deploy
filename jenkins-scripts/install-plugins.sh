@@ -11,7 +11,7 @@ REF_DIR=${REF:-/usr/share/jenkins/ref/plugins}
 FAILED="$REF_DIR/failed-plugins.txt"
 export JENKINS_UC=https://updates.jenkins.io
 
-. /var/jenkins_home/jenkins-support
+. /var/jenkins_home/jenkins-support/jenkins-scripts
 
 getLockFile() {
     printf '%s' "$REF_DIR/${1}.lock"

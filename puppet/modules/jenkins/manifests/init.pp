@@ -54,7 +54,7 @@ class jenkins(
 
       'Start Jenkins':
       path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      cwd       => "${jenkins_home}/${repo_name}",
+      cwd       => "${jenkins_home}/${repo_name}/jenkins-scripts",
       environment => [ "JENKINS_HOME=${jenkins_home}" ],
       command   => "nohup ./jenkins.sh > jenkins.out&",
       user        => $jenkins_user,
@@ -74,7 +74,7 @@ class jenkins(
 
       'install Plugins':
       path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      cwd       => "${jenkins_home}/${repo_name}",
+      cwd       => "${jenkins_home}/${repo_name}/jenkins-scripts",
       environment => [ "JENKINS_HOME=${jenkins_home}" ],
       command   => "bash install-plugins.sh github maven-plugin",
       user        => $jenkins_user,
@@ -100,7 +100,7 @@ class jenkins(
 
       "restart jenkins":
       path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      cwd       => "${jenkins_home}/${repo_name}",
+      cwd       => "${jenkins_home}/${repo_name}/jenkins-scripts",
       environment => [ "JENKINS_HOME=${jenkins_home}" ],
       command   => "nohup ./jenkins-restart.sh > jenkins-restart.out&",
       user        => $jenkins_user,
